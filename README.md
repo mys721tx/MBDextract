@@ -4,7 +4,7 @@
 By [Yishen Miao](https://github.com/mys721tx)
 
 ## Description
-**MBDextract** will extract game scripts and other files from a MBD package.
+**MBDextract** will extract game scripts from a MBD file.
 
 ## Installation
 
@@ -20,8 +20,7 @@ mbdextract file
 ```
 
 ### Known Issues
-1. MBDextract 0.1 could not read from widecard.
-2. MBDextract will encounter segfault when feeds with non MBD package.
+1. MBDextract 0.1 could not read from wildcard.
 
 ## Author
 * [Yishen Miao](https://github.com/mys721tx)
