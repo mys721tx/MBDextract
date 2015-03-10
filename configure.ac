@@ -1,4 +1,4 @@
-AC_INIT([MBDextract],[0.1],[mys721tx@gmail.com],[MBDextract],[https://github.com/mys721tx/MBDextract])
+AC_INIT([MBDextract],[0.2],[mys721tx@gmail.com],[MBDextract],[https://github.com/mys721tx/MBDextract])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_PROG_CC
 

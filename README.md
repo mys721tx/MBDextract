@@ -20,7 +20,7 @@ mbdextract file
 ```
 
 ### Known Issues
-1. MBDextract 0.1 could not read from wildcard.
+1. MBDextract 0.2 could not read from wildcard.
 
 ## Author
 * [Yishen Miao](https://github.com/mys721tx)
