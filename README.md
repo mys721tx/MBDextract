@@ -9,8 +9,7 @@ By [Yishen Miao](https://github.com/mys721tx)
 ## Installation
 
 ```console
-./configure
-make
+cmake .
 make install
 ```
 

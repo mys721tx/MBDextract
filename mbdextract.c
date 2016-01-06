@@ -20,7 +20,7 @@
  *
  */
 
-#include <config.h>
+#include "config.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -33,7 +33,7 @@ const char *bugreport = PACKAGE_BUGREPORT;
 
 void printUsage(char pname[])
 {
-	printf("%s\nUsage: %s file\n\nplease send bug reports to <%s>.\n", 
+	printf("Version: %s\nUsage: %s file\n\nplease send bug reports to <%s>.\n", 
 			ver_str, pname, bugreport);
 }
 
