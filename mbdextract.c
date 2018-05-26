@@ -21,10 +21,10 @@
  */
 
 #include "config.h"
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <errno.h>
 
 #include "dicts.h"
 
@@ -33,8 +33,9 @@ const char *bugreport = PACKAGE_BUGREPORT;
 
 void printUsage(char pname[])
 {
-	printf("Version: %s\nUsage: %s file\n\nplease send bug reports to <%s>.\n", 
-			ver_str, pname, bugreport);
+	printf("Version: %s\nUsage: %s file\n\nplease send bug reports to "
+	       "<%s>.\n",
+	       ver_str, pname, bugreport);
 }
 
 int main(int argc, char *argv[])
@@ -47,7 +48,6 @@ int main(int argc, char *argv[])
 	unsigned long offset;
 
 	const char magicnum[] = {0x4d, 0x42, 0x44, 0x00};
-	
 
 	if (argc < 2) {
 		printUsage(argv[0]);
@@ -56,8 +56,8 @@ int main(int argc, char *argv[])
 
 	ifp = fopen(argv[1], mode);
 	if (!ifp) {
-		fprintf(stderr, "Unable to open %s: %s\n", 
-				argv[1], strerror(errno));
+		fprintf(stderr, "Unable to open %s: %s\n", argv[1],
+			strerror(errno));
 		return errno;
 	}
 
@@ -67,8 +67,8 @@ int main(int argc, char *argv[])
 
 	fbuff = (char *)malloc(ifp_len + 1 * sizeof(char));
 	if (!fbuff) {
-		fprintf(stderr, "Unable to allocate memory: %s\n", 
-				strerror(errno));
+		fprintf(stderr, "Unable to allocate memory: %s\n",
+			strerror(errno));
 		fclose(ifp);
 		return errno;
 	}
@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
 	fread(fbuff, ifp_len, 1 * sizeof(char), ifp);
 	fclose(ifp);
 
-	mbdp = memmem(fbuff, ifp_len, magicnum, 4 * sizeof(char));
+	mbdp = (char *)memmem(fbuff, ifp_len, magicnum, 4 * sizeof(char));
 	if (!mbdp) {
 		fprintf(stderr, "Cannot find MBD header.\n");
 		return 1;
@@ -86,16 +86,20 @@ int main(int argc, char *argv[])
 
 	for (i = offset * sizeof(char); i < ifp_len; i += 4 * sizeof(char)) {
 		memcpy(tmp, &fbuff[i], 8 * sizeof(char));
-		p = memmem(lhash, 256 * 8 * sizeof(char), tmp, 8 * sizeof(char));
+		p = (char *)memmem(lhash, 256 * 8 * sizeof(char), tmp,
+				   8 * sizeof(char));
 		if (p) {
 			i += 8 * sizeof(char);
-			printf("%s", ldict[(int)(p - lhash) / 8 * sizeof(char)]);
+			printf("%s",
+			       ldict[(int)(p - lhash) / 8 * sizeof(char)]);
 		}
-		
+
 		memcpy(tmp, &fbuff[i], 4 * sizeof(char));
-		p = memmem(shash, 115 * 4 * sizeof(char), tmp, 4 * sizeof(char));
+		p = (char *)memmem(shash, 115 * 4 * sizeof(char), tmp,
+				   4 * sizeof(char));
 		if (p) {
-			printf("%s", sdict[(int)(p - shash) / 4 * sizeof(char)]);
+			printf("%s",
+			       sdict[(int)(p - shash) / 4 * sizeof(char)]);
 		}
 	}
 
