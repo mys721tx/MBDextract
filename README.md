@@ -1,9 +1,11 @@
 # MBDextract
+
 [![Build Status](https://travis-ci.org/mys721tx/MBDextract.svg?branch=master)](https://travis-ci.org/mys721tx/MBDextract)
 
 By [Yishen Miao](https://github.com/mys721tx)
 
 ## Description
+
 **MBDextract** will extract game scripts from a MBD file.
 
 ## Installation
@@ -14,15 +16,19 @@ make install
 ```
 
 ## Usage
+
 ```console
 mbdextract file
 ```
 
 ### Known Issues
+
 1. MBDextract 0.2 could not read from wildcard.
 
 ## Author
+
 * [Yishen Miao](https://github.com/mys721tx)
 
 ## License
+
 [GNU General Public License, version 2](http://www.gnu.org/licenses/gpl-2.0.html)
