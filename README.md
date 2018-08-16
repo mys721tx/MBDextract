@@ -1,6 +1,7 @@
 # MBDextract
 
 [![Build Status](https://travis-ci.org/mys721tx/MBDextract.svg?branch=master)](https://travis-ci.org/mys721tx/MBDextract)
+[![CodeFactor](https://www.codefactor.io/repository/github/mys721tx/mbdextract/badge/master)](https://www.codefactor.io/repository/github/mys721tx/mbdextract/overview/master)
 
 By [Yishen Miao](https://github.com/mys721tx)
 
